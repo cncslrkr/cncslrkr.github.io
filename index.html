@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cncs.lrkr</title>
+        <link rel="stylesheet" href="styles.css">
+</head>
+<body style="font-family: Consolas,monospace">
+
+    <h1>cncs.lrkr</h1>
+    <p>some work from reid byron</p>
+    <p>reid.rjb@gmail.com</p>
+
+    <header style="background-color:black; color:white">
+    surfacebound.start
+    </header>
+    <img src="surfacebound/we_didnt_know.png" alt="we_didnt_know.png" style="width:60%" class="center" onclick="openDialog(this.src)" >
+    <img src="surfacebound/rocket_garden.png" alt="rocket_garden.png" style="width:60%" class="center" onclick="openDialog(this.src)">
+    <img src="surfacebound/generationlossbw2.png" alt="generationlossbw2.png" style="width:60%" class="center" onclick="openDialog(this.src)">
+    <img src="surfacebound/lama1.png" alt="lama1.png" style="width:60%" class="center" onclick="openDialog(this.src)">
+    <img src="surfacebound/reentry_croped.png" alt="reentry_croped.png" style="width:60%" class="center" onclick="openDialog(this.src)">
+    <img src="surfacebound/signoff.gif" alt="signoff.gif" style="width:60%" class="center" onclick="openDialog(this.src)">
+    <header style="background-color:black; color:white">
+    surfacebound.end
+    </header>
+
+    <div class="gif-gallery">
+        <div class="gif-item">
+          <img src="cncslrkr.jpeg" alt="cncs.lrkr" onclick="openDialog(this.src)">
+        </div>
+        <div class="gif-item">
+          <img src="exp_7.50.gif" alt="exp" onclick="openDialog(this.src)">
+        </div>
+        <div class="gif-item">
+          <img src="phasegy.gif" alt="phase" onclick="openDialog(this.src)">
+        </div>
+        <div class="gif-item">
+          <img src="exp_7.50.gif" alt="exp" onclick="openDialog(this.src)">
+        </div>
+        <div class="gif-item">
+          <img src="cncslrkr.jpeg" alt="cncs.lrkr" onclick="openDialog(this.src)">
+        </div>
+      </div>
+
+    <!-- <div class="link"><a href="..."><img src="cncslrkr.jpeg" style="width:100%" onclick="openDialog(this.src)"/></a></div>
+    <div class="link"><a href="..."><img src="exp_7.50.gif" style="width:100%" onclick="openDialog(this.src)"/></a></div>
+    <div class="link"><a href="..."><img src="phasegy.gif" style="width:100%" onclick="openDialog(this.src)"/></a></div>
+    <div class="link"><a href="..."><img src="exp_7.50.gif" style="width:100%" onclick="openDialog(this.src)"/></a></div>
+    <div class="link"><a href="..."><img src="cncslrkr.jpeg" style="width:100%" onclick="openDialog(this.src)"/></a></div> -->
+
+    <img src="tank_thot.jpg" alt="last_mornings_sun" style="width:auto" height="90%" class="center"  onclick="openDialog(this.src)">
+
+    <div class="masonry">
+        <div class="item">
+          <img src="floated.jpg" alt="Placeholder 1" onclick="openDialog(this.src)">
+        </div>
+        <div class="item">
+          <img src="last_mornings_sun.jpg" alt="Placeholder 2" onclick="openDialog(this.src)">
+        </div>
+        <div class="item">
+            <img src="yump.png" onclick="openDialog(this.src)">
+        </div>
+        <div class="item">
+            <img src="greater_allium.jpg" onclick="openDialog(this.src)">
+        </div>
+        <!-- <div class="item">
+          <img src="tank_thot.jpg" alt="Placeholder 3" onclick="openDialog(this.src)">
+        </div> -->
+        <div class="item">
+          <img src="at_the_beauty_store.jpg" onclick="openDialog(this.src)">
+        </div>
+        <div class="item">
+            <img src="the_enchantments.jpg" onclick="openDialog(this.src)">
+        </div>
+
+        <div class="item">
+            <img src="were_we_here.jpg" onclick="openDialog(this.src)">
+          </div>
+
+        <div class="item">
+          <img src="more_ours.jpg" alt="Placeholder 5" onclick="openDialog(this.src)">
+        </div>
+        <div class="item">
+            <img src="hold_my_hand.png" alt="Placeholder 5" onclick="openDialog(this.src)">
+        </div>
+        <div class="item">
+            <img src="frish.png" alt="Placeholder 5" onclick="openDialog(this.src)">
+        </div>
+        <div class="item">
+            <img src="ai_nature4_origional.gif" alt="Placeholder 5" onclick="openDialog(this.src)">
+        </div>
+        <div class="item">
+            <img src="gravitational_walking_agents.gif" alt="Placeholder 5" onclick="openDialog(this.src)">
+        </div>
+        <div class="item">
+            <img src="journey.jpg" onclick="openDialog(this.src)">
+        </div>
+      
+        <div class="item">
+            <img src="allium_bagage.png" onclick="openDialog(this.src)">
+        </div>
+        <div class="item">
+            <img src="meaningful_mischief.jpg" onclick="openDialog(this.src)">
+        </div>
+    
+        <div class="item">
+            <img src="weighted.jpg" onclick="openDialog(this.src)">
+        </div>
+
+        <div class="item">
+            <img src="odd_heads.jpg" onclick="openDialog(this.src)">
+        </div>
+
+    </div>
+    
+    <!-- Hidden Dialog for Enlarged Image -->
+    <dialog id="imageDialog" class="image-dialog" onclick="this.close()">
+        <img id="dialogImage" src="" alt="Expanded Image">
+    </dialog>
+
+</body>
+</html>
+
+<script>
+    function openDialog(src) {
+      const dialog = document.getElementById('imageDialog');
+      const dialogImage = document.getElementById('dialogImage');
+      dialogImage.src = src;
+      dialog.showModal();
+    }
+</script>
+    
