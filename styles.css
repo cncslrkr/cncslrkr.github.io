@@ -85,7 +85,11 @@ body
       dialog:not([open]) {
         display: none;
       }
-      
+
+      dialog:focus {
+        outline: 2px solid black;
+      }
+
 
     .gif-gallery {
         display: flex;
