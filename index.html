@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cncs.lrkr</title>
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="comic.css" />
 </head>
 <body style="font-family: Consolas,monospace">
 
@@ -12,21 +13,36 @@
     <p>cncs.lrkr@gmail.com</p>
 
    <p>
-    <a href="aerated_and_condemned.html" style="color: black;">рыба зек</a>
+    <a href="рыба_зек.html" style="color: black;">рыба зек</a>
   </p>
 
-    <header style="background-color:black; color:white">
-    surfacebound.start
-    </header>
-    <img src="surfacebound/we_didnt_know.png" alt="we_didnt_know.png" style="width:60%" class="center" onclick="openDialog(this.src)" >
+  <header class="comic-header">surfacebound.start</header>
+
+  <div class="comic-reader">
+    <button id="prevBtn" class="nav-side left">&lt;</button>
+  
+    <div class="comic-panel">
+      <img id="comicPage" src="" alt="Comic Page" />
+    </div>
+  
+    <button id="nextBtn" class="nav-side right">&gt;</button>
+  </div>
+  
+  <header class="comic-header">surfacebound.end</header>
+
+  <div id="imageModal" class="image-modal hidden">
+    <img id="modalImg" alt="Full Comic" />
+  </div>
+  
+
+    <!-- <img src="surfacebound/we_didnt_know.png" alt="we_didnt_know.png" style="width:60%" class="center" onclick="openDialog(this.src)" >
     <img src="surfacebound/rocket_garden.png" alt="rocket_garden.png" style="width:60%" class="center" onclick="openDialog(this.src)">
     <img src="surfacebound/generationlossbw2.png" alt="generationlossbw2.png" style="width:60%" class="center" onclick="openDialog(this.src)">
     <img src="surfacebound/lama1.png" alt="lama1.png" style="width:60%" class="center" onclick="openDialog(this.src)">
     <img src="surfacebound/reentry_croped.png" alt="reentry_croped.png" style="width:60%" class="center" onclick="openDialog(this.src)">
-    <img src="surfacebound/signoff.gif" alt="signoff.gif" style="width:60%" class="center" onclick="openDialog(this.src)">
-    <header style="background-color:black; color:white">
-    surfacebound.end
-    </header>
+    <img src="surfacebound/signoff.gif" alt="signoff.gif" style="width:60%" class="center" onclick="openDialog(this.src)"> -->
+    
+
 
     <div class="gif-gallery">
         <div class="gif-item">
@@ -134,3 +150,95 @@
     }
 </script>
     
+
+<script>
+  // You define only the folder name and list of images
+  const imageFolder = 'surfacebound/';
+  const imageFiles = [
+    "we_didnt_know.png",
+    "rocket_garden.png",
+    "generationlossbw2.png",
+    "lama1.png",
+    "reentry_croped.png",
+    "signoff.gif",
+  ];
+  
+  const preloadedImages = [];
+  imageFiles.forEach(src => {
+    const img = new Image();
+    img.src = imageFolder + src;
+    preloadedImages.push(img);
+  });
+
+  let currentPage = 0;
+    const comicPage = document.getElementById('comicPage');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function updatePage() {
+      comicPage.src = imageFolder + imageFiles[currentPage];
+      prevBtn.disabled = currentPage === 0;
+      nextBtn.disabled = currentPage === imageFiles.length - 1;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage--;
+        updatePage();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < imageFiles.length - 1) {
+        currentPage++;
+        updatePage();
+      }
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') prevBtn.click();
+      if (e.key === 'ArrowRight') nextBtn.click();
+    });
+
+    // Touch swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    comicPage.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    comicPage.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleGesture();
+    });
+
+    function handleGesture() {
+      if (touchEndX < touchStartX - 50) nextBtn.click();
+      if (touchEndX > touchStartX + 50) prevBtn.click();
+    }
+
+    // Init
+    updatePage();
+
+    const imageModal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+
+    comicPage.addEventListener('click', () => {
+      modalImg.src = comicPage.src;
+      imageModal.classList.remove('hidden');
+    });
+
+    // Close modal on click or Escape key
+    imageModal.addEventListener('click', () => {
+      imageModal.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        imageModal.classList.add('hidden');
+      }
+    });
+
+  </script>

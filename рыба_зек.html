@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cncs.lrkr</title>
+        <link rel="stylesheet" href="styles.css">
+</head>
+<body class="aerated-background" style="font-family: Consolas,monospace;">
+
+    <img src="aerated_and_condemned/aerated_and_condemned.jpg" style="height:90%; width:auto; border: 22px solid black" class="center" onclick="openDialog(this.src)" >
+
+    <div class="frosted-box">
+        <pre id="poem">
+      there's an aquarium i go to buy my food
+
+      it stands out from the tessellation of homogeneous big box stores
+      
+      it is a simple pleasure to meander the isles 
+      compared to the unwalkable streets and unremarkable light-industry
+      
+      its species richness is uncomputable relative to the surroundant where the only ambulating animal life is carseat leather
+      
+      in its tanks are creachers from the benthic, the shoals, under rocks, and from schools
+      it smells like an old-timey dock far away from shore
+      there's a troupe of hardworking people behind the counter happy to help
+      it's fun to look at their scales, shales, shells, barbels, stalks, flecks, whiskers, and lateral lines
+      
+      they are made of math and infinite wonder
+      when i divorce myself from reality it's a beautiful escape
+      the whole store is stocked fresh and bountiful and i allow myself to marvel and to be enchanted by the beautiful creachers
+      it is a beautiful escape
+      
+      only,
+      it is not that
+      it is very different
+      
+      the creachers there are aerated and condemned
+      each tanks life support system exists to support death
+      
+      the creachers are sensitive
+      staring out into florescence, accustomed to near darkness
+      
+      creachers with ears that line the entirety of their bodies
+      with appendages sufficient to navigate craggy total darkness
+      are stuffed into boxes with ceaseless unsteady pounding aeration
+      
+      they are sensitive
+      and arrive damaged from rough handling
+      
+      some too are killers
+      eat and eaten where they are from
+      but it makes little difference
+      
+      why must the only reprieve be of cruel nature
+      my heart returns to the crack in the sidewalk collecting cigarette dust
+        </pre>
+    </div>
+
+    <div class="masonry">
+      <div class="item">
+        <img src="aerated_and_condemned/fish_mosaic.jpg" alt="fish_zek0" onclick="openDialog(this.src)">
+      </div>
+      <div class="item">
+        <img src="aerated_and_condemned/fish_zek1.jpg" alt="fish_zek1" onclick="openDialog(this.src)">
+      </div>
+      <div class="item">
+        <img src="aerated_and_condemned/fish_zek2.jpg" alt="fish_zek2" onclick="openDialog(this.src)">
+      </div>
+      <div class="item">
+        <img src="aerated_and_condemned/fish_zek0.jpg" alt="fish_zek0" onclick="openDialog(this.src)">
+      </div>
+      <div class="item">
+        <img src="aerated_and_condemned/fish_zek1.jpg" alt="fish_zek1" onclick="openDialog(this.src)">
+      </div>
+      <div class="item">
+        <img src="aerated_and_condemned/fish_mosaic.jpg" alt="fish_zek0" onclick="openDialog(this.src)">
+      </div>
+    </div>
+    <!-- Hidden Dialog for Enlarged Image -->
+    <dialog id="imageDialog" class="image-dialog" onclick="this.close()">
+      <img id="dialogImage" src="" alt="Expanded Image">
+  </dialog>
+
+</body>
+</html>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const pre = document.getElementById('poem');
+  if (!pre) return;
+
+  const lines = pre.innerHTML.split('\n');
+
+  const container = document.createElement('div');
+  container.className = 'poem-wrapper';
+
+  lines.forEach(lineHTML => {
+    const lineDiv = document.createElement('div');
+    lineDiv.className = 'poem-line';
+
+    if (lineHTML.trim() === '') {
+      // preserve empty line with a non-breaking space
+      lineDiv.innerHTML = '&nbsp;';
+    } else {
+      lineDiv.innerHTML = lineHTML.trim();
+    }
+
+    container.appendChild(lineDiv);
+  });
+
+  pre.replaceWith(container);
+});
+
+  </script>
