@@ -141,9 +141,9 @@ body
       word-break: break-word;
     }
 
-body.aerated-background {
+  body.aerated-background {
     background-image: url("aerated_and_condemned/catfish.jpeg");
-}
+  }
 
 .image-modal {
   position: fixed;
