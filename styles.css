@@ -176,3 +176,52 @@ body
   transform: scale(1.02);
 }
 
+.carousel-page {
+  overflow-x: clip;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 400px; /* Set desired image height */
+  background-color: black;
+}
+
+.carousel-track {
+  display: flex;
+  animation: scroll 10s linear infinite;
+  animation-play-state: running;
+}
+
+.carousel-track:hover{
+  animation-play-state: running;
+}
+
+.carousel-image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  flex-shrink: 0;
+  background-color: black;
+}
+
+.carousel-image-wrapper img {
+  height: 400px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+  
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+

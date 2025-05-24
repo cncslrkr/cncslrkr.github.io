@@ -70,6 +70,19 @@
 
     <img src="tank_thot.jpg" alt="last_mornings_sun" style="width:auto" height="90%" class="center"  onclick="openDialog(this.src)">
 
+
+      <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-image-wrapper"><img src="glitches/face0.dng" alt=""></div>
+          <div class="carousel-image-wrapper"><img src="glitches/face1.dng" alt=""></div>
+          <div class="carousel-image-wrapper"><img src="glitches/face2.dng" alt=""></div>
+          <div class="carousel-image-wrapper"><img src="glitches/face3.dng" alt=""></div>
+          <div class="carousel-image-wrapper"><img src="glitches/face4.dng" alt=""></div>
+        </div>
+      </div>
+
+
+
     <div class="masonry">
         <div class="item">
           <img src="floated.jpg" alt="Placeholder 1" onclick="openDialog(this.src)">
@@ -131,12 +144,22 @@
             <img src="odd_heads.jpg" onclick="openDialog(this.src)">
         </div>
 
+
+        <div class="item">
+          <img src="glitches/woman_face0.dng" onclick="openDialog(this.src)">
+      </div>
+
+      <div class="item">
+        <img src="glitches/artesia_central_spread.dng" onclick="openDialog(this.src)">
+    </div>
+
     </div>
     
     <!-- Hidden Dialog for Enlarged Image -->
     <dialog id="imageDialog" class="image-dialog" onclick="this.close()">
         <img id="dialogImage" src="" alt="Expanded Image">
     </dialog>
+
 
 </body>
 </html>
@@ -240,5 +263,91 @@
         imageModal.classList.add('hidden');
       }
     });
-
   </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('carouselTrack');
+    const images = Array.from(track.children);
+    const totalImages = images.length;
+
+    // Duplicate images for seamless infinite scroll
+    images.forEach(img => {
+      const clone = img.cloneNode(true);
+      track.appendChild(clone);
+    });
+
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeft = 0;
+    let animationFrameId;
+    let autoScrollSpeed = 1;
+
+    const startAutoScroll = () => {
+      const scroll = () => {
+        track.scrollLeft += autoScrollSpeed;
+        if (track.scrollLeft >= track.scrollWidth / 2) {
+          track.scrollLeft = 0;
+        }
+        animationFrameId = requestAnimationFrame(scroll);
+      };
+      scroll();
+    };
+
+    const stopAutoScroll = () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+
+    track.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+      track.style.cursor = 'grabbing';
+      stopAutoScroll();
+    });
+
+    track.addEventListener('mouseleave', () => {
+      isDragging = false;
+      track.style.cursor = 'grab';
+      startAutoScroll();
+    });
+
+    track.addEventListener('mouseup', () => {
+      isDragging = false;
+      track.style.cursor = 'grab';
+      startAutoScroll();
+    });
+
+    track.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1; // Adjust scroll speed
+      track.scrollLeft = scrollLeft - walk;
+    });
+
+    // Touch events for mobile support
+    track.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      startX = e.touches[0].pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+      stopAutoScroll();
+    });
+
+    track.addEventListener('touchend', () => {
+      isDragging = false;
+      startAutoScroll();
+    });
+
+    track.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      const x = e.touches[0].pageX - track.offsetLeft;
+      const walk = (x - startX) * 1; // Adjust scroll speed
+      track.scrollLeft = scrollLeft - walk;
+    });
+
+    // Initialize auto-scroll
+    startAutoScroll();
+  });
+</script>
+
